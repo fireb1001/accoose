@@ -1,0 +1,28 @@
+{
+  "name": "accoose",
+  "description": "",
+  "dependencies": {
+    "apollo-server": "2.9.7",
+    "graphql": "14.5.8",
+    "graphql-tag": "^2.10.1",
+    "mongoose": "5.7.12",
+    "@babel/core": "7.7.4",
+    "@babel/node": "7.7.4",
+    "@babel/preset-env": "7.7.4"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/index.js ",
+    "start": "babel-node src/index.js ",
+    "build-babel": "babel -d ./build ./src -s"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/graphql": "14.0.1",
+    "nodemon": "1.18.4"
+  }
+}
