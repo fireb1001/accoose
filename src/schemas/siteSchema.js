@@ -6,6 +6,7 @@ export default gql`
     name: String!
     url: String!
     logoUrl: String
+    accounts: [Account!]
   }
 
   extend type Query {

@@ -5,7 +5,7 @@ export default gql`
     id: ID!
     login: String!
     passhint: String!
-    site: Site!
+    site: Site
   }
 
   extend type Query {
@@ -14,6 +14,6 @@ export default gql`
   }
 
   extend type Mutation {
-    createAccount(login: String!, passhint: String!): Account!
+    createAccount(login: String!, passhint: String!, site: ID): Account!
   }
 `;
