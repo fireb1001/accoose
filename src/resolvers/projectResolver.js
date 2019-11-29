@@ -18,16 +18,24 @@ export default {
     },
     updateProject: async (
       parent,
-      { id, name, notes },
+      { id, name, notes, accounts },
       { models: { projectModel } },
       info
     ) => {
       let willUpdate = {
         ...(name ? { name: name } : {}),
-        ...(notes ? { notes: notes } : {})
+        ...(notes ? { notes: notes } : {}),
+        ...(accounts ? { accounts: accounts } : [])
       };
+      console.log(willUpdate);
       return projectModel.findByIdAndUpdate(id, willUpdate, { new: true });
     }
   },
-  Project: {}
+  Project: {
+    accounts: async ({ id }, args, { models: { accountModel } }, info) => {
+      let accounts = await accountModel.find({ project: id }).exec();
+      console.log(accounts);
+      return accounts;
+    }
+  }
 };

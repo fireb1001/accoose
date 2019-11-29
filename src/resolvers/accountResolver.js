@@ -25,6 +25,10 @@ export default {
       if (params.site)
         return await siteModel.findById({ _id: params.site }).exec();
       else return null;
+    },
+    projects: async ({ id }, args, { models: { projectModel } }, info) => {
+      let projects = await projectModel.find({ accounts: id }).exec();
+      return projects;
     }
   }
 };

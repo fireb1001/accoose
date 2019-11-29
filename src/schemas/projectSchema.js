@@ -5,6 +5,7 @@ export default gql`
     id: ID!
     name: String!
     notes: String
+    accounts: [ID]
   }
 
   extend type Query {
@@ -14,6 +15,11 @@ export default gql`
 
   extend type Mutation {
     createProject(name: String!, notes: String, site: ID): Project!
-    updateProject(id: ID!, name: String!, notes: String): Project!
+    updateProject(
+      id: ID!
+      name: String
+      notes: String
+      accounts: [ID]
+    ): Project!
   }
 `;

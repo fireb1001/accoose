@@ -12,7 +12,13 @@ const accountSchema = new mongoose.Schema({
   site: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "site"
-  }
+  },
+  projects: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "project"
+    }
+  ]
 });
 
 const account = mongoose.model("account", accountSchema);
