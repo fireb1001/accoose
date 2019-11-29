@@ -2,6 +2,7 @@ import schemas from "./schemas";
 import resolvers from "./resolvers";
 import accountModel from "./models/accountModel";
 import siteModel from "./models/siteModel";
+import domainModel from "./models/domainModel";
 
 const mongoose = require("mongoose");
 const { ApolloServer } = require("apollo-server");
@@ -60,7 +61,7 @@ const server = new ApolloServer({
   context: async ({ req }) => {
     if (req) {
       return {
-        models: { accountModel, siteModel }
+        models: { accountModel, siteModel, domainModel }
       };
     }
   },
@@ -69,9 +70,12 @@ const server = new ApolloServer({
 });
 
 server.listen(PORT).then(({ url }) => {
-  mongoose.connect(process.env.MONGO_CONN, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
+  mongoose.connect(
+    "mongodb+srv://fireb1001:4261179m9@cluster0-msfvo.mongodb.net/test?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  );
   console.log(`🚀 Server ready at ${url}`);
 });
