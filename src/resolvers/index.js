@@ -1,5 +1,6 @@
-import siteResolvers from "./siteResolvers";
-import accountResolvers from "./accountResolvers";
-import domainResolvers from "./domainResolvers";
+import siteResolver from "./siteResolver";
+import accountResolver from "./accountResolver";
+import domainResolver from "./domainResolver";
+import projectResolver from "./projectResolver";
 
-export default [siteResolvers, accountResolvers, domainResolvers];
+export default [siteResolver, accountResolver, domainResolver, projectResolver];
