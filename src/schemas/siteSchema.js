@@ -16,5 +16,6 @@ export default gql`
 
   extend type Mutation {
     createSite(name: String!, url: String!, logoUrl: String): Site!
+    updateSite(id: ID!, name: String, url: String, logoUrl: String): Site!
   }
 `;

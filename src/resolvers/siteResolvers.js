@@ -18,6 +18,20 @@ export default {
     ) => {
       const site = await siteModel.create({ name, url, logoUrl });
       return site;
+    },
+    updateSite: async (
+      parent,
+      { id, name, url, logoUrl },
+      { models: { siteModel } },
+      info
+    ) => {
+      let willUpdate = {
+        ...(name ? { name: name } : {}),
+        ...(url ? { url: url } : {}),
+        ...(logoUrl ? { logoUrl: logoUrl } : {})
+      };
+      const site = siteModel.findByIdAndUpdate(id, willUpdate, { new: true });
+      return site;
     }
   },
   Site: {
