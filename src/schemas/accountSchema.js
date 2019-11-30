@@ -7,6 +7,7 @@ export default gql`
     passhint: String!
     site: Site
     projects: [Project]
+    domains: [Domain]
   }
 
   extend type Query {

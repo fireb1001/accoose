@@ -10,11 +10,26 @@ export default {
   Mutation: {
     createDomain: async (
       parent,
-      { domain, notes, site },
+      { domain, notes, site, accounts },
       { models: { domainModel } },
       info
     ) => {
-      return await domainModel.create({ domain, notes, site });
+      return await domainModel.create({ domain, notes, site, accounts });
+    },
+    updateDomain: async (
+      parent,
+      { id, domain, notes, site, accounts },
+      { models: { domainModel } },
+      info
+    ) => {
+      let willUpdate = {
+        ...(domain ? { name: domain } : {}),
+        ...(notes ? { notes: notes } : {}),
+        ...(site ? { site: site } : {}),
+        ...(accounts ? { accounts: accounts } : [])
+      };
+      // console.log(willUpdate);
+      return domainModel.findByIdAndUpdate(id, willUpdate, { new: true });
     }
   },
   Domain: {
@@ -22,6 +37,10 @@ export default {
       if (params.site)
         return await siteModel.findById({ _id: params.site }).exec();
       else return null;
+    },
+    accounts: async ({ id }, args, { models: { accountModel } }, info) => {
+      let accounts = await accountModel.find({ id: id }).exec();
+      return accounts;
     }
   }
 };

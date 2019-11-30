@@ -18,6 +18,12 @@ const accountSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "project"
     }
+  ],
+  domains: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "domain"
+    }
   ]
 });
 

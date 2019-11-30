@@ -10,11 +10,11 @@ export default {
   Mutation: {
     createProject: async (
       parent,
-      { name, notes },
+      { name, notes, accounts },
       { models: { projectModel } },
       info
     ) => {
-      return await projectModel.create({ name, notes });
+      return await projectModel.create({ name, notes, accounts });
     },
     updateProject: async (
       parent,
