@@ -44,7 +44,7 @@ export default {
       { models: { accountModel } },
       info
     ) => {
-      console.log(accounts);
+      //console.log(accounts);
       let ret_accounts;
       try {
         ret_accounts = await accountModel
@@ -55,7 +55,7 @@ export default {
       } catch (error) {
         console.error(error);
       }
-      console.log(ret_accounts);
+      //console.log(ret_accounts);
       return ret_accounts;
     }
   }

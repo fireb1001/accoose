@@ -29,6 +29,10 @@ export default {
     projects: async ({ id }, args, { models: { projectModel } }, info) => {
       let projects = await projectModel.find({ accounts: id }).exec();
       return projects;
+    },
+    domains: async ({ id }, args, { models: { domainModel } }, info) => {
+      let domains = await domainModel.find({ accounts: id }).exec();
+      return domains;
     }
   }
 };
