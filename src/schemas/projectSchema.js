@@ -5,7 +5,7 @@ export default gql`
     id: ID!
     name: String!
     notes: String
-    accounts: [ID]
+    accounts: [Account!]
   }
 
   extend type Query {

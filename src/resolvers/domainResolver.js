@@ -38,9 +38,25 @@ export default {
         return await siteModel.findById({ _id: params.site }).exec();
       else return null;
     },
-    accounts: async ({ id }, args, { models: { accountModel } }, info) => {
-      let accounts = await accountModel.find({ id: id }).exec();
-      return accounts;
+    accounts: async (
+      { accounts },
+      args,
+      { models: { accountModel } },
+      info
+    ) => {
+      console.log(accounts);
+      let ret_accounts;
+      try {
+        ret_accounts = await accountModel
+          .find()
+          .where("_id")
+          .in(accounts)
+          .exec();
+      } catch (error) {
+        console.error(error);
+      }
+      console.log(ret_accounts);
+      return ret_accounts;
     }
   }
 };
