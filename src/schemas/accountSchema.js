@@ -30,5 +30,7 @@ export default gql`
       site: ID
       tags: [ID]
     ): Account!
+    deleteAccount(id: ID!): Account
+    removeAccount(id: ID!): Account
   }
 `;

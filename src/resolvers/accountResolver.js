@@ -31,7 +31,27 @@ export default {
         ...(tags ? { tags: tags } : [])
       };
       console.log(willUpdate);
-      return accountModel.findByIdAndUpdate(id, willUpdate, { new: true });
+      return await accountModel.findByIdAndUpdate(id, willUpdate, {
+        new: true
+      });
+    },
+    deleteAccount: async (
+      parent,
+      { id },
+      { models: { accountModel } },
+      info
+    ) => {
+      let [err, acc] = await accountModel.deleteById(id);
+      console.log(err, acc);
+      return acc;
+    },
+    removeAccount: async (
+      parent,
+      { id },
+      { models: { accountModel } },
+      info
+    ) => {
+      return await accountModel.findByIdAndRemove(id);
     }
   },
   Account: {

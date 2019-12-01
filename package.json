@@ -2,13 +2,14 @@
   "name": "accoose",
   "description": "",
   "dependencies": {
+    "@babel/core": "7.7.4",
+    "@babel/node": "7.7.4",
+    "@babel/preset-env": "7.7.4",
     "apollo-server": "2.9.7",
     "graphql": "14.5.8",
     "graphql-tag": "^2.10.1",
     "mongoose": "5.7.12",
-    "@babel/core": "7.7.4",
-    "@babel/node": "7.7.4",
-    "@babel/preset-env": "7.7.4"
+    "mongoose-delete": "^0.5.1"
   },
   "engines": {
     "node": "10.x"
