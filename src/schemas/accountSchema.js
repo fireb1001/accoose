@@ -8,6 +8,7 @@ export default gql`
     site: Site
     projects: [Project]
     domains: [Domain]
+    tags: [Tag]
   }
 
   extend type Query {
@@ -16,6 +17,18 @@ export default gql`
   }
 
   extend type Mutation {
-    createAccount(login: String!, passhint: String!, site: ID): Account!
+    createAccount(
+      login: String!
+      passhint: String!
+      site: ID
+      tags: [ID]
+    ): Account!
+    updateAccount(
+      id: ID
+      login: String
+      passhint: String
+      site: ID
+      tags: [ID]
+    ): Account!
   }
 `;

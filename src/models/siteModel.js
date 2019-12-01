@@ -19,6 +19,12 @@ const siteSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "account"
     }
+  ],
+  tags: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "tag"
+    }
   ]
 });
 /*

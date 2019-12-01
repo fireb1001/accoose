@@ -17,6 +17,21 @@ export default {
     ) => {
       const account = await accountModel.create({ login, passhint, site });
       return account;
+    },
+    updateAccount: async (
+      parent,
+      { id, login, passhint, site, tags },
+      { models: { accountModel } },
+      info
+    ) => {
+      let willUpdate = {
+        ...(login ? { login: login } : {}),
+        ...(passhint ? { passhint: passhint } : {}),
+        ...(site ? { site: site } : {}),
+        ...(tags ? { tags: tags } : [])
+      };
+      console.log(willUpdate);
+      return accountModel.findByIdAndUpdate(id, willUpdate, { new: true });
     }
   },
   Account: {
@@ -33,6 +48,13 @@ export default {
     domains: async ({ id }, args, { models: { domainModel } }, info) => {
       let domains = await domainModel.find({ accounts: id }).exec();
       return domains;
+    },
+    tags: async ({ tags }, args, { models: { tagModel } }, info) => {
+      return await tagModel
+        .find()
+        .where("_id")
+        .in(tags)
+        .exec();
     }
   }
 };

@@ -24,6 +24,12 @@ const accountSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "domain"
     }
+  ],
+  tags: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "tag"
+    }
   ]
 });
 

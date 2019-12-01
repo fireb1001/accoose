@@ -3,6 +3,7 @@ import siteSchema from "./siteSchema";
 import { gql } from "apollo-server";
 import domainSchema from "./domainSchema";
 import projectSchema from "./projectSchema";
+import tagSchema from "./tagSchema";
 
 const linkSchema = gql`
   type Query {
@@ -18,5 +19,6 @@ export default [
   accountSchema,
   siteSchema,
   domainSchema,
-  projectSchema
+  projectSchema,
+  tagSchema
 ];
