@@ -32,6 +32,7 @@ export default gql`
       tags: [ID]
     ): Account!
     deleteAccount(id: ID!): Account!
-    removeAccount(id: ID!): Account
+    restoreAccount(id: ID!): Account!
+    removeAccount(id: ID!): Account!
   }
 `;

@@ -30,7 +30,7 @@ export default {
         ...(site ? { site: site } : {}),
         ...(tags ? { tags: tags } : [])
       };
-      console.log(willUpdate);
+      // console.log(willUpdate);
       return await accountModel.findByIdAndUpdate(id, willUpdate, {
         new: true
       });
@@ -43,8 +43,17 @@ export default {
     ) => {
       await accountModel.deleteById(id);
       let del_acc = await accountModel.findOneWithDeleted({ _id: id });
-      console.log("del_acc", del_acc);
+      // console.log("del_acc", del_acc);
       return del_acc;
+    },
+    restoreAccount: async (
+      parent,
+      { id },
+      { models: { accountModel } },
+      info
+    ) => {
+      await accountModel.restore({ _id: id });
+      return await accountModel.findOne({ _id: id });
     },
     removeAccount: async (
       parent,
@@ -57,7 +66,7 @@ export default {
   },
   Account: {
     site: async (params, args, { models: { siteModel } }, info) => {
-      console.log(params.site);
+      // console.log(params.site);
       if (params.site)
         return await siteModel.findById({ _id: params.site }).exec();
       else return null;
