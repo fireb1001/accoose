@@ -6,6 +6,7 @@ export default gql`
     login: String!
     passhint: String!
     site: Site
+    deleted: Boolean
     projects: [Project]
     domains: [Domain]
     tags: [Tag]
@@ -30,7 +31,7 @@ export default gql`
       site: ID
       tags: [ID]
     ): Account!
-    deleteAccount(id: ID!): Account
+    deleteAccount(id: ID!): Account!
     removeAccount(id: ID!): Account
   }
 `;

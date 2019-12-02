@@ -41,9 +41,10 @@ export default {
       { models: { accountModel } },
       info
     ) => {
-      let [err, acc] = await accountModel.deleteById(id);
-      console.log(err, acc);
-      return acc;
+      await accountModel.deleteById(id);
+      let del_acc = await accountModel.findOneWithDeleted({ _id: id });
+      console.log("del_acc", del_acc);
+      return del_acc;
     },
     removeAccount: async (
       parent,
