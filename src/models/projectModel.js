@@ -23,5 +23,10 @@ const projectSchema = new mongoose.Schema({
 });
 
 const project = mongoose.model("project", projectSchema);
+var mongoose_delete = require("mongoose-delete");
 
+projectSchema.plugin(mongoose_delete, {
+  deletedAt: true,
+  overrideMethods: true
+});
 export default project;

@@ -30,6 +30,24 @@ export default {
       };
       // console.log(willUpdate);
       return domainModel.findByIdAndUpdate(id, willUpdate, { new: true });
+    },
+    deleteDomain: async (parent, { id }, { models: { domainModel } }, info) => {
+      await domainModel.deleteById(id);
+      let del_item = await domainModel.findOneWithDeleted({ _id: id });
+      // console.log("del_item", del_item);
+      return del_item;
+    },
+    restoreDomain: async (
+      parent,
+      { id },
+      { models: { domainModel } },
+      info
+    ) => {
+      await domainModel.restore({ _id: id });
+      return await domainModel.findOne({ _id: id });
+    },
+    removeDomain: async (parent, { id }, { models: { domainModel } }, info) => {
+      return await domainModel.findByIdAndRemove(id);
     }
   },
   Domain: {

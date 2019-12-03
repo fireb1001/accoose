@@ -21,5 +21,8 @@ export default gql`
       notes: String
       accounts: [ID]
     ): Project!
+    deleteProject(id: ID!): Project!
+    restoreProject(id: ID!): Project!
+    removeProject(id: ID!): Project!
   }
 `;

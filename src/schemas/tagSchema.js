@@ -14,5 +14,9 @@ export default gql`
 
   extend type Mutation {
     createTag(hashtag: String!, notes: String): Tag!
+    updateTag(id: ID!, hashtag: String, notes: String): Tag!
+    deleteTag(id: ID!): Tag!
+    restoreTag(id: ID!): Tag!
+    removeTag(id: ID!): Tag!
   }
 `;

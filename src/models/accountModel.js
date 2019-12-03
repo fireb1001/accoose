@@ -33,10 +33,11 @@ const accountSchema = new mongoose.Schema({
   ]
 });
 var mongoose_delete = require("mongoose-delete");
+
 accountSchema.plugin(mongoose_delete, {
   deletedAt: true,
   overrideMethods: true
 });
-const account = mongoose.model("account", accountSchema);
 
+const account = mongoose.model("account", accountSchema);
 export default account;

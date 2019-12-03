@@ -28,5 +28,8 @@ export default gql`
       site: ID
       accounts: [ID]
     ): Domain!
+    deleteDomain(id: ID!): Domain!
+    restoreDomain(id: ID!): Domain!
+    removeDomain(id: ID!): Domain!
   }
 `;

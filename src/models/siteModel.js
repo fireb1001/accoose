@@ -35,5 +35,10 @@ siteSchema.pre('save', function() {
 });
  */
 const site = mongoose.model("site", siteSchema);
+var mongoose_delete = require("mongoose-delete");
 
+siteSchema.plugin(mongoose_delete, {
+  deletedAt: true,
+  overrideMethods: true
+});
 export default site;
