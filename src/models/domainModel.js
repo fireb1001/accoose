@@ -26,11 +26,12 @@ const domainSchema = new mongoose.Schema({
   }
 });
 
-const domain = mongoose.model("domain", domainSchema);
+
 var mongoose_delete = require("mongoose-delete");
 
 domainSchema.plugin(mongoose_delete, {
   deletedAt: true,
   overrideMethods: true
 });
-export default domain;
+
+export default mongoose.model("domain", domainSchema);

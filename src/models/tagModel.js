@@ -12,11 +12,11 @@ const tagSchema = new mongoose.Schema({
   }
 });
 
-const tag = mongoose.model("tag", tagSchema);
 var mongoose_delete = require("mongoose-delete");
 
 tagSchema.plugin(mongoose_delete, {
   deletedAt: true,
   overrideMethods: true
 });
-export default tag;
+
+export default mongoose.model("tag", tagSchema);
