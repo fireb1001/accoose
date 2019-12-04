@@ -5,6 +5,7 @@ import siteModel from "./models/siteModel";
 import domainModel from "./models/domainModel";
 import projectModel from "./models/projectModel";
 import tagModel from "./models/tagModel";
+import toolModel from "./models/toolModel";
 
 const mongoose = require("mongoose");
 const { ApolloServer } = require("apollo-server");
@@ -18,7 +19,14 @@ const server = new ApolloServer({
   context: async ({ req }) => {
     if (req) {
       return {
-        models: { accountModel, siteModel, domainModel, projectModel, tagModel }
+        models: {
+          accountModel,
+          siteModel,
+          domainModel,
+          projectModel,
+          tagModel,
+          toolModel
+        }
       };
     }
   },

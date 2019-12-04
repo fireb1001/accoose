@@ -24,4 +24,4 @@ toolSchema.plugin(mongoose_delete, {
   overrideMethods: true
 });
 
-export default mongoose.model("tag", toolSchema);
+export default mongoose.model("tool", toolSchema);

@@ -21,5 +21,6 @@ export default [
   siteSchema,
   domainSchema,
   projectSchema,
-  toolSchema
+  toolSchema,
+  tagSchema
 ];
